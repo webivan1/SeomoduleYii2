@@ -1,0 +1,30 @@
+{
+    "name": "yii2-webivan1/yii2-seomodule",
+    "description": "Seo module",
+    "license": "MIT",
+    "keywords": ["yii2", "extension"],
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Ivan Maltsev",
+            "email": "info-babki@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "*",
+        "twig/twig": "~2.0",
+        "yii2-webivan1/yii2-seomodule": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "webivan\\seomodule\\": ""
+        }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/webivan1/SeomoduleYii2.git"
+        }
+    ]
+}

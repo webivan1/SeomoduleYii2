@@ -1,0 +1,16 @@
+.form-control {
+    font-size: 17px;
+    color: #0d0d0e;
+}
+
+textarea.form-control {
+    min-height: 120px !important;
+}
+
+.form-group .help-block {
+    display: none;
+}
+
+.form-group.has-error .help-block {
+    display: block;
+}
