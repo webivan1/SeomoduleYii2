@@ -15,10 +15,6 @@ class AppAsset extends AssetBundle
 {
     public $sourcePath = '@seomodule/frontend';
 
-    public $js = [
-        'js/main.js',
-    ];
-
     public $css = [
         'css/main.css',
     ];

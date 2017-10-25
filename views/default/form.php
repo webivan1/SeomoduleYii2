@@ -12,6 +12,8 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use webivan\seomodule\models\ItemsSeoMetatags;
 use webivan\seomodule\models\ItemsObjectText;
+use webivan\seomodule\assets\AppAsset;
+use yii\web\View;
 
 $this->title = $model->isNewRecord ? 'Add seo config' : 'Edit config #' . $model->id;
 
@@ -33,6 +35,9 @@ if (!$model->isNewRecord || Yii::$app->request->isPost) {
         ]);
     }
 }
+
+$assetUrl = Yii::$app->getAssetManager()->publish('@seomodule/frontend/js');
+$this->registerJsFile($assetUrl[1] . '/main.js', ['position' => View::POS_BEGIN]);
 
 ?>
 
@@ -57,7 +62,7 @@ if (!$model->isNewRecord || Yii::$app->request->isPost) {
             <?= $form->field($model, 'source')->textInput() ?>
 
             <?= $form->field($model, 'connect')->dropDownList($dropDownConnect, [
-                'prompt' => 'Not connect'
+                'prompt' => 'Select'
             ]) ?>
 
             <?= $form->field($model, 'state')->dropDownList([

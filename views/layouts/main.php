@@ -36,7 +36,7 @@ $bundle = AppAsset::register($this);
 
 <?php NavBar::begin([
     'brandLabel' => 'Seomodule',
-    'brandUrl' => 'https://github.com/webivan1',
+    'brandUrl' => 'https://github.com/webivan1/SeomoduleYii2',
     'brandOptions' => [
         'target' => '_blank'
     ],
@@ -64,6 +64,12 @@ $bundle = AppAsset::register($this);
 <?php NavBar::end() ?>
 
 <div class="container">
+    <?php if (Yii::$app->session->hasFlash('success')) : ?>
+        <div class="alert alert-success">
+            <?= Yii::$app->session->getFlash('success') ?>
+        </div>
+    <?php endif; ?>
+
     <?= $content ?>
 </div>
 

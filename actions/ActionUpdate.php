@@ -51,7 +51,7 @@ class ActionUpdate extends BaseAction
             $this->model->validate() &&
             $this->model->save(false)
         ) {
-            $this->controller->refresh();
+            Yii::$app->session->setFlash('success', 'Update successfull!');
         }
 
         return $this->render($this->viewName, [

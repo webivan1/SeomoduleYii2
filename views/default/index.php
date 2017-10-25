@@ -41,7 +41,6 @@ $this->title = 'List seo config';
         ],
         [
             'attribute' => 'count_seo',
-            'filter' => false,
             'format' => 'html',
             'value' => function ($data) {
                 return Html::tag('b', $data->count_seo, [

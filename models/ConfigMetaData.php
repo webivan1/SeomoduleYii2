@@ -55,12 +55,12 @@ class ConfigMetaData extends ActiveRecord
             [['source', 'connect', 'templater'], 'string', 'on' => self::SCENARIO_SEARCH],
             [['state', 'id', 'count_seo'], 'integer', 'on' => self::SCENARIO_SEARCH],
 
-            [['source', 'state'], 'required', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
+            [['source', 'state', 'connect'], 'required', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['state'], 'integer', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['run_date'], 'safe', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['source', 'connect'], 'string', 'max' => 150, 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['templater'], 'string', 'max' => 100, 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
-            [['source', 'connect'], 'unique', 'targetAttribute' => ['source', 'connect'], 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
+            [['source'], 'unique', 'targetAttribute' => ['source'], 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
             [['meta_template'], 'validateMetaDatas', 'on' => [self::SCENARIO_CREATE, self::SCENARIO_UPDATE]],
         ];
     }
@@ -145,6 +145,9 @@ class ConfigMetaData extends ActiveRecord
             'query' => $query,
             'pagination' => [
                 'pageSize' => $this->pageSize,
+            ],
+            'sort' => [
+                'defaultOrder' => ['id' => SORT_DESC]
             ]
         ]);
 
@@ -159,7 +162,8 @@ class ConfigMetaData extends ActiveRecord
             ])
             ->andFilterWhere(['like', 't.source', $this->source])
             ->andFilterWhere(['like', 't.connect', $this->connect])
-            ->andFilterWhere(['like', 't.templater', $this->templater]);
+            ->andFilterWhere(['like', 't.templater', $this->templater])
+            ->andFilterHaving(['count_seo' => $this->count_seo]);
 
         return $dataProvider;
     }

@@ -8,12 +8,12 @@
 
 namespace webivan\seomodule\components;
 
+use Yii;
+use yii\base\Component;
 use webivan\seomodule\connects\IConnects;
 use webivan\seomodule\models\Seotexts;
 use webivan\seomodule\SeoModule;
 use webivan\seomodule\templaters\ITemplater;
-use Yii;
-use yii\base\Component;
 use webivan\seomodule\models\ConfigMetaData;
 use yii\base\Exception;
 use yii\db\ActiveQuery;

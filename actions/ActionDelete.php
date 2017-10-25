@@ -34,6 +34,8 @@ class ActionDelete extends BaseAction
             throw new NotFoundHttpException();
         }
 
+        Yii::$app->session->setFlash('success', 'Deleted #' . $this->model->id);
+
         $this->model->delete();
 
         $this->controller->goBack(Url::to('/default/index'));
