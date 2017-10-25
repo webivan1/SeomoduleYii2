@@ -38,7 +38,7 @@ class ConfigMetaData extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'config_meta_data';
+        return '{{%config_meta_data}}';
     }
 
     // Scenarios

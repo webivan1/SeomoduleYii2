@@ -28,7 +28,7 @@ class Seotexts extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'seotexts';
+        return '{{%seotexts}}';
     }
 
     /**
