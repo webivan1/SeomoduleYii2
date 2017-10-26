@@ -45,18 +45,6 @@ use yii\helpers\VarDumper;
     <li>
         Ваш файл коннект должен возвращать следующие типы данных на выбор: <br>
 
-        <!--ul>
-            <li><code>yii\db\Command</code></li>
-            <li><code>yii\db\ActiveQuery</code></li>
-            <li><code>IConnects</code></li>
-            <li><code>\Closure</code><br />
-                <ul>
-                    <li><code>Array</code></li>
-                    <li><code>\Generator</code></li>
-                </ul>
-            </li>
-        </ul-->
-
         <div class="panel-group" id="accordion">
 
             <div class="panel panel-default">

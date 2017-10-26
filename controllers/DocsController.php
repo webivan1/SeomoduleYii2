@@ -28,4 +28,20 @@ class DocsController extends Controller
     {
         return $this->render('seo_config');
     }
+
+    /**
+     * Action /docs/config
+     */
+    public function actionRunConfig()
+    {
+        return $this->render('run_config');
+    }
+
+    /**
+     * Action /docs/metatags
+     */
+    public function actionMetatags()
+    {
+        return $this->render('metatags');
+    }
 }

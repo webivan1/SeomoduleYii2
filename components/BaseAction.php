@@ -41,11 +41,12 @@ class BaseAction extends Action
     public function render($viewName, array $params = [])
     {
         $module = Yii::$app->controller->module;
+        $connects = $module->getConnects();
 
         $defaultParams = [
             'params' => Yii::$app->params['webivan@seomodule'],
-            'connects' => $module->getConnects(),
-            'dropDownConnect' => array_combine(array_keys($module->getConnects()), array_keys($module->getConnects()))
+            'connects' => $connects,
+            'dropDownConnect' => array_combine(array_keys($connects), array_keys($connects))
         ];
 
         return Yii::$app->controller->render($viewName, array_merge($defaultParams, $params));

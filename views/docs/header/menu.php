@@ -32,5 +32,15 @@ echo Tabs::widget([
             'url' => Url::to('/docs/config'),
             'active' => Yii::$app->controller->action->id === 'config'
         ],
+        [
+            'label' => 'Как запустить сео конфиг?',
+            'url' => Url::to('/docs/run-config'),
+            'active' => Yii::$app->controller->action->id === 'run-config'
+        ],
+        [
+            'label' => 'Как достать мета теги?',
+            'url' => Url::to('/docs/metatags'),
+            'active' => Yii::$app->controller->action->id === 'metatags'
+        ],
     ],
 ]);
