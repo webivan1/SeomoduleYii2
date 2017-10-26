@@ -46,7 +46,7 @@ return [
             // Общий доступ к модулю
             'accessDoctype' => function () {
                 // return bool
-                return !Yii::$app->user->isGuest && Yii::$app->user->can('manager')
+                return !Yii::$app->user->isGuest && Yii::$app->user->can('manager');
             },
             
             'accessRulesAction' => [
