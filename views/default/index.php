@@ -25,7 +25,7 @@ $this->title = 'Все конфиги';
     </div>
 </div>
 
-<?php Pjax::begin() ?>
+<?php Pjax::begin(['id' => 'grid-yii']) ?>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
@@ -65,6 +65,20 @@ $this->title = 'Все конфиги';
             'value' => function ($data) {
                 return Html::tag('span', $data->state == 2 ? 'Active' : 'Disabled', [
                     'class' => 'label label-' . ($data->state == 2 ? 'success' : 'danger')
+                ]);
+            }
+        ],
+        [
+            'label' => 'Run',
+            'format' => 'raw',
+            'value' => function ($data) {
+                return Html::tag('button', 'run #' . $data->id, [
+                    'class' => 'btn btn-sm btn-primary',
+                    'data' => [
+                        'pjax' => false,
+                        'url' => Url::to('/default/run?id=' . $data->id)
+                    ],
+                    'onclick' => 'runConnect(this)'
                 ]);
             }
         ],

@@ -22,7 +22,8 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
-        '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'
+        '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
+        'js/gridFunctions.js'
     ];
 
     public $jsOptions = [

@@ -8,11 +8,13 @@
 
 namespace webivan\seomodule\controllers;
 
+use webivan\seomodule\models\ConfigMetaData;
 use Yii;
 use webivan\seomodule\components\GeneratorMetatags;
 use webivan\seomodule\components\Controller;
 use yii\helpers\VarDumper;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class DefaultController extends Controller
 {
@@ -78,5 +80,22 @@ class DefaultController extends Controller
             : $datas[0];
 
         return VarDumper::dump($result, 5, true);
+    }
+
+    /**
+     * Action /run?id={id}
+     */
+    public function actionRun($id)
+    {
+        if (!Yii::$app->request->isAjax || is_null($model = ConfigMetaData::findOne(intval($id)))) {
+            throw new NotFoundHttpException();
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $generator = new GeneratorMetatags();
+        $generator->run($model);
+
+        return ['state' => 'ok'];
     }
 }
