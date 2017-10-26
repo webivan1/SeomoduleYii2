@@ -11,7 +11,7 @@ use webivan\seomodule\helpers\Url;
 use yii\widgets\Pjax;
 use yii\helpers\Html;
 
-$this->title = 'List seo config';
+$this->title = 'Все конфиги';
 
 ?>
 
@@ -20,7 +20,7 @@ $this->title = 'List seo config';
 <div class="panel">
     <div class="panel-body text-right">
         <a class="btn btn-primary" href="<?= Url::to('/default/create') ?>">
-            Add new config
+            Добавить новый
         </a>
     </div>
 </div>

@@ -67,8 +67,8 @@ class ItemsSeoMetatags extends Model
         return [
             [['title', 'description'], 'required'],
             [['title', 'description', 'seotext', 'heading_1', 'heading_2', 'heading_3', 'other_text'], 'string'],
-            [['title', 'description'], 'string', 'max' => 255],
-            [['heading_1', 'heading_2', 'heading_3'], 'string', 'max' => 150],
+            [['title', 'description'], 'string'],
+            [['heading_1', 'heading_2', 'heading_3'], 'string', 'max' => 255],
             [['seotext', 'other_text', 'object_text'], 'safe'],
             ['object_text', 'filter', 'filter' => function ($value) {
                 return !empty($value) && is_array($value)
@@ -97,6 +97,8 @@ class ItemsSeoMetatags extends Model
 
         $outputSuccess = [];
 
+        $i = 0;
+
         foreach ($values as $key => $value) {
             $model = new ItemsObjectText();
             $model->setAttributes([
@@ -105,10 +107,17 @@ class ItemsSeoMetatags extends Model
             ]);
 
             if (!$model->validate()) {
-                continue;
+                if (!empty($model->key) || !empty($model->value)) {
+                    $field = empty($model->key) ? 'key' : 'value';
+                    $this->addError("object_text.$i.$field", "Required field $field");
+                } else {
+                    continue;
+                }
             }
 
             $outputSuccess[$model->key] = $model->value;
+
+            $i++;
         }
 
         if (!empty($outputSuccess)) {

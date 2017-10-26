@@ -16,7 +16,13 @@ class AppAsset extends AssetBundle
     public $sourcePath = '@seomodule/frontend';
 
     public $css = [
+        'css/bs.paper.css',
         'css/main.css',
+        '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css',
+    ];
+
+    public $js = [
+        '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'
     ];
 
     public $jsOptions = [
@@ -27,7 +33,7 @@ class AppAsset extends AssetBundle
         \yii\web\JqueryAsset::class,
         \yii\bootstrap\BootstrapAsset::class,
         \yii\bootstrap\BootstrapPluginAsset::class,
-        \yii\bootstrap\BootstrapThemeAsset::class,
+        //\yii\bootstrap\BootstrapThemeAsset::class,
         \yii\web\YiiAsset::class
     ];
 }

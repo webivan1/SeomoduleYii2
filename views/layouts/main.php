@@ -41,21 +41,26 @@ $bundle = AppAsset::register($this);
         'target' => '_blank'
     ],
     'options' => [
-        'class' => 'navbar navbar-default navbar-static-top'
+        'class' => 'navbar navbar-inverse navbar-static-top'
     ]
 ]) ?>
 
 <?= Nav::widget([
     'items' => [
         [
-            'label' => 'Home',
+            'label' => 'Welcome',
             'url' => Url::to('/'),
-            'active' => Yii::$app->controller->action->id === 'welcome'
+            'active' => Yii::$app->controller->id === 'default' && Yii::$app->controller->action->id === 'welcome'
         ],
         [
-            'label' => 'List',
+            'label' => 'Сео конфиги',
             'url' => Url::to('/default/index'),
-            'active' => Yii::$app->controller->action->id === 'index'
+            'active' => Yii::$app->controller->id === 'default' && Yii::$app->controller->action->id !== 'welcome'
+        ],
+        [
+            'label' => 'Документация',
+            'url' => Url::to('/docs/index'),
+            'active' => Yii::$app->controller->id === 'docs'
         ],
     ],
     'options' => ['class' => 'navbar-nav'],
