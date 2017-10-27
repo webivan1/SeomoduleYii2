@@ -44,4 +44,12 @@ class DocsController extends Controller
     {
         return $this->render('metatags');
     }
+
+    /**
+     * Action /docs/templaters
+     */
+    public function actionTemplaters()
+    {
+        return $this->render('templaters');
+    }
 }

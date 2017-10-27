@@ -23,22 +23,27 @@ $this->registerJs('
 echo Tabs::widget([
     'items' => [
         [
-            'label' => 'Что такое коннект?',
+            'label' => 'Коннекты',
             'url' => Url::to('/docs'),
             'active' => Yii::$app->controller->action->id === 'index'
         ],
         [
-            'label' => 'Что такое сео конфиг',
+            'label' => 'Шаблонизаторы',
+            'url' => Url::to('/docs/templaters'),
+            'active' => Yii::$app->controller->action->id === 'templaters'
+        ],
+        [
+            'label' => 'Сео конфиги',
             'url' => Url::to('/docs/config'),
             'active' => Yii::$app->controller->action->id === 'config'
         ],
         [
-            'label' => 'Как запустить сео конфиг?',
+            'label' => 'Запуск сео конфига',
             'url' => Url::to('/docs/run-config'),
             'active' => Yii::$app->controller->action->id === 'run-config'
         ],
         [
-            'label' => 'Как достать мета теги?',
+            'label' => 'Использование на проекте',
             'url' => Url::to('/docs/metatags'),
             'active' => Yii::$app->controller->action->id === 'metatags'
         ],
