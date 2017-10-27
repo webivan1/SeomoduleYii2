@@ -141,11 +141,7 @@ class GeneratorMetatags extends Component
 
             $templaterClass = $this->module->classMapTemplater[$this->model->templater];
 
-            if (!method_exists($templaterClass, 'getInstance')) {
-                throw new Exception("Undefined method getInstance in class {$templaterClass}");
-            }
-
-            $objectTemplater = $templaterClass::getInstance($this->model->meta_template, $item);
+            $objectTemplater = new $templaterClass($this->model->meta_template, $item);
 
             if (!$objectTemplater instanceof ITemplater) {
                 throw new Exception("Error! Templater class is not ITemplater interface");

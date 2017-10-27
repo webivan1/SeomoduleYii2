@@ -14,11 +14,6 @@ use yii\helpers\Json;
 abstract class Templater
 {
     /**
-     * @property array
-     */
-    protected static $instance = [];
-
-    /**
      * Один item с данными
      *
      * @property array
@@ -35,34 +30,10 @@ abstract class Templater
     /**
      * Init
      */
-    protected function __construct($params, array $data)
+    public function __construct($params, array $data)
     {
         $this->parseData = is_string($params) ? Json::decode($params, true) : $params;
         $this->data = $data;
-    }
-
-    private function __wakeup()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-    /**
-     * Multi singleton
-     *
-     * @return static
-     */
-    public static function getInstance($params, array $data)
-    {
-        $className = get_called_class();
-
-        if (!array_key_exists($className, self::$instance)) {
-            self::$instance[$className] = new static($params, $data);
-        }
-
-        return self::$instance[$className];
     }
 
     /**
