@@ -50,8 +50,6 @@ abstract class Templater
         }
 
         foreach ($this->parseData as $key => $text) {
-            echo $key . PHP_EOL;
-
             if (empty($text)) {
                 $results[$key] = '';
                 continue;
