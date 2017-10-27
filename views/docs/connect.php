@@ -21,15 +21,36 @@ use yii\helpers\VarDumper;
     <code>{{%seotexts}}</code>
 </p>
 
-<p>Пример массива:</p>
+<p><b>Пример массива полученный из коннекта:</b></p>
 
-<?= VarDumper::dumpAsString([
+<div class="panel">
+<pre class="unstyled"><!--
+--><div class="code-vis" code="php">
+return [
     [
+        // Этот ID (не обязательно int)
+        // будет записываться в колонку `value` таблицы {{%seotexts}}
+        // Если не указать ID то в `value` запишется значение 0
+        'id' => 'product-3543',
 
+        // Дальше идут любые параметры, которые
+        // можно использовать в ваших текстах
+        'name' => 'Test',
+        'description' => 'Test text',
+        'count_likes' => 56,
+        'count_dislikes' => ''
+    ],
+    [
+        // ...
     ],
 
     // ...
-], 10, true) ?>
+];
+</div><!--
+--></pre>
+</div>
+
+<hr />
 
 <ol>
     <li>
@@ -164,6 +185,11 @@ return new TestConnect();
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse">
                     <div class="panel-body">
+                        <div class="alert alert-info">
+                            Указан параметр <b>$dev</b> для того чтобы при выборе коннекта в сео конфиге показывался
+                            один item массива а не весь пулл данных
+                        </div>
+
                         <p>1 пример <code>Array</code></p>
 <pre class="unstyled"><!--
 --><div class="code-vis" code="php">

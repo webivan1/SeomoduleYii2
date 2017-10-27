@@ -60,6 +60,13 @@ class ItemsSeoMetatags extends Model
     public $object_text;
 
     /**
+     * @property array
+     */
+    protected $removeTags = [
+        'title', 'description', 'heading_1', 'heading_2', 'heading_3'
+    ];
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -77,6 +84,21 @@ class ItemsSeoMetatags extends Model
             }],
             ['object_text', 'validateObjectText'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeValidate()
+    {
+        // remove html tags
+        foreach ($this->removeTags as $tag) {
+            if (property_exists($this, $tag)) {
+                $this->{$tag} = strip_tags($this->{$tag});
+            }
+        }
+
+        return parent::beforeValidate();
     }
 
     /**

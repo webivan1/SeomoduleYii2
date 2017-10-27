@@ -18,6 +18,7 @@ use webivan\seomodule\models\ConfigMetaData;
 use yii\base\Exception;
 use yii\db\ActiveQuery;
 use yii\db\Command;
+use yii\helpers\ArrayHelper;
 
 class GeneratorMetatags extends Component
 {
@@ -27,6 +28,13 @@ class GeneratorMetatags extends Component
      * @property bool
      */
     public $dev = false;
+
+    /**
+     * Html encode
+     *
+     * @property bool
+     */
+    public $encode = true;
 
     /**
      * @property ConfigMetaData
@@ -144,6 +152,10 @@ class GeneratorMetatags extends Component
             }
 
             $rows = $objectTemplater->run();
+
+            if ($this->encode) {
+                $rows = ArrayHelper::htmlEncode($rows);
+            }
 
             $metaTags = array_merge([
                 'value' => $item['id'] ?? 0,
