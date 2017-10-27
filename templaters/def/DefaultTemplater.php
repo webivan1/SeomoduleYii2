@@ -24,7 +24,7 @@ class DefaultTemplater extends Templater implements ITemplater
      */
     public function parseText($text, $key)
     {
-        return preg_replace_callback($this->regex, function($matches) {
+        return preg_replace_callback($this->regex, function($matches) use ($key) {
 
             if (array_key_exists($matches[1], $this->data)) {
 
@@ -38,7 +38,7 @@ class DefaultTemplater extends Templater implements ITemplater
                     $text = !empty($matches[7]) ? str_replace('$$', $result, $matches[7]) : $result;
 
                     if (preg_match($this->regex, $text)) {
-                        $text = $this->parseText($text);
+                        $text = $this->parseText($text, $key);
                     }
 
                     return $text;
