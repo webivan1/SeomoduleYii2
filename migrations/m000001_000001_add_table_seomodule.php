@@ -54,10 +54,6 @@ class m000001_000001_add_table_seomodule extends Migration
     {
         $this->dropTable('{{%config_meta_data}}');
         $this->dropTable('{{%seotexts}}');
-
-        echo "m171025_124049_add_table_seomodule cannot be reverted.\n";
-
-        return false;
     }
 
     /*

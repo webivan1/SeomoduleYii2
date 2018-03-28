@@ -8,8 +8,8 @@
 
 namespace webivan\seomodule\controllers;
 
-use webivan\seomodule\models\ConfigMetaData;
 use Yii;
+use webivan\seomodule\models\ConfigMetaData;
 use webivan\seomodule\components\GeneratorMetatags;
 use webivan\seomodule\components\Controller;
 use yii\helpers\VarDumper;
@@ -79,7 +79,14 @@ class DefaultController extends Controller
             ? $datas->current()
             : $datas[0];
 
-        return VarDumper::dump($result, 5, true);
+        Yii::$app->getResponse()->format = Response::FORMAT_RAW;
+
+        ob_start();
+        VarDumper::dump($result, 5, true);
+        $content = ob_get_contents();
+        ob_get_clean();
+
+        return $content;
     }
 
     /**
