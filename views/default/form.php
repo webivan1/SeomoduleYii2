@@ -24,7 +24,11 @@ $objectTexts = [];
 
 if (!$model->isNewRecord || Yii::$app->request->isPost) {
     if (is_string($model->meta_template)) {
-        $model->meta_template = Json::decode($model->meta_template, true);
+        try {
+            $model->meta_template = Json::decode($model->meta_template, true);
+        } catch (\Exception $e) {
+            $model->meta_template = [];
+        }
     }
 
     if (!empty($model->meta_template['object_text']) && isset($model->meta_template['object_text']['key'])) {
