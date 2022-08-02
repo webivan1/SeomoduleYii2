@@ -1,3 +1,6 @@
+❗Deprecated
+------
+
 Extension seomodule Yii 2
 =================================
 
